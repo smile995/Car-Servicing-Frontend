@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import logo from "../../assets/logo.svg";
 
 const Navbar = () => {
   const nabManu = (
@@ -50,13 +51,15 @@ const Navbar = () => {
               {nabManu}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <div>
+            <img className="w-20" src={logo} alt="logo" />
+          </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{nabManu}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          <button className="btn btn-outline btn-error">Appointment</button>
         </div>
       </div>
     </>
