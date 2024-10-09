@@ -1,5 +1,5 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import "../../index.css";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 
 const Navbar = () => {
@@ -52,13 +52,16 @@ const Navbar = () => {
             </ul>
           </div>
           <div>
-            <img className="w-20" src={logo} alt="logo" />
+            <Link to={"/"}
+            >
+              <img className="md:w-20 w-16" src={logo} alt="logo" />
+            </Link>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{nabManu}</ul>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end gap-5">
           <button className="btn btn-outline btn-error">Appointment</button>
         </div>
       </div>
