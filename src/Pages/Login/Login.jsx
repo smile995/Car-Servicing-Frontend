@@ -1,15 +1,22 @@
+import { FaArrowRight, FaFacebook, FaGoogle } from "react-icons/fa";
 import img from "../../assets/images/login/login.svg";
+import { FaLinkedinIn } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const Login = () => {
+  const handleLogin = (e) => {
+    e.preventDefault();
+    console.log("im comming");
+  };
   return (
     <div className="md:flex justify-around items-center">
       <div>
         <img src={img} alt="" />
       </div>
       <div className="card bg-base-100 h-full w-full max-w-sm border-2 shadow-2xl">
-        <h1 className="text-5xl font-bold">Login</h1>
-        <form className="card-body">
+        <form onSubmit={handleLogin} className="card-body">
           <div className="form-control">
+            <h1 className="text-5xl font-bold text-center">Login</h1>
             <label className="label">
               <span className="label-text">Email</span>
             </label>
@@ -40,6 +47,21 @@ const Login = () => {
             <input className="btn btn-error" type="submit" value="Login" />
           </div>
         </form>
+        <div className="mb-8 space-y-4">
+          <p className="text-center ">Or Sign In with </p>
+          <div className="flex gap-4 justify-center">
+            <button className="btn btn-circle text-3xl text-[#FF3811] font-semibold border-0 btn-outline">
+              <FaFacebook></FaFacebook>
+            </button>
+            <button className="btn btn-circle text-3xl text-[#FF3811] font-semibold border-0 btn-outline">
+              <FaLinkedinIn />
+            </button>
+            <button className="btn btn-circle text-3xl text-[#FF3811] font-semibold border-0 btn-outline">
+             <FaGoogle></FaGoogle>
+            </button>
+          </div>
+          <p className="text-center "> You have no account? <Link className="text-[#FF3811] font-bold">SignUp</Link></p>
+        </div>
       </div>
     </div>
   );
