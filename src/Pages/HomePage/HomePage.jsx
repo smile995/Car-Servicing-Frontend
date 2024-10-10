@@ -2,10 +2,14 @@ import Banner from "../../Components/Banner/Banner";
 import TitleSubTitle from "../../Components/SertionTitle/TitleSubTitle";
 import person from "../../assets/images/about_us/person.jpg";
 import parts from "../../assets/images/about_us/parts.jpg";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ServicesCard from "../../Components/ServicesCard/ServicesCard";
+import { CarContextAuth } from "../../../UseContext/CarContext";
 
 const HomePage = () => {
+  const {name}=useContext(CarContextAuth)
+  console.log({name});
+  
   const [services, setServices] = useState([]);
   useEffect(() => {
     fetch("services.json")

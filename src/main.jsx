@@ -1,11 +1,14 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import {  RouterProvider } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 import router from "./Routers/Routers.jsx";
+import CarContext from "../UseContext/CarContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <CarContext>
+      <RouterProvider router={router}></RouterProvider>
+    </CarContext>
   </StrictMode>
 );
