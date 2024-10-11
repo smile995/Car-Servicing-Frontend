@@ -5,12 +5,14 @@ import parts from "../../assets/images/about_us/parts.jpg";
 import { useEffect, useState } from "react";
 import ServicesCard from "../../Components/ServicesCard/ServicesCard";
 import ProductCard from "../../Components/ProductCard/ProductCard";
-import {
-  FaPhone,
-  FaPhoneAlt,
-  FaPhoneSlash,
-  FaRegCalendar,
-} from "react-icons/fa";
+import check from "../../assets/icons/check.svg";
+import quote from "../../assets/icons/quote.svg";
+import deliveryt from "../../assets/icons/deliveryt.svg";
+import Wrench from "../../assets/icons/Wrench.svg";
+import group from "../../assets/icons/group.svg";
+import people from "../../assets/icons/person.svg";
+
+import { FaPhoneAlt, FaRegCalendar } from "react-icons/fa";
 import { FaMapLocation } from "react-icons/fa6";
 
 const HomePage = () => {
@@ -39,7 +41,7 @@ const HomePage = () => {
             />
           </div>
           <div className="space-y-1 md:w-1/2">
-            <p className="text-[#FF3811] font-bold text-xl ">About Us</p>
+            <p className="text-[#FF3811] font-bold md:text-xl ">About Us</p>
             <h1 className="text-5xl font-bold">
               We are qualified & of experience in this field
             </h1>
@@ -86,7 +88,7 @@ const HomePage = () => {
             </div>
             <div>
               <p className="text-sm">We are open monday-friday</p>
-              <p className="font-bold text-xl">7:00 am - 9:00 pm</p>
+              <p className="font-bold md:text-xl">7:00 am - 9:00 pm</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
@@ -95,7 +97,7 @@ const HomePage = () => {
             </div>
             <div>
               <p className="text-sm">Have a question?</p>
-              <p className="font-bold text-xl">+2546 251 2658</p>
+              <p className="font-bold md:text-xl">+2546 251 2658</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
@@ -104,7 +106,7 @@ const HomePage = () => {
             </div>
             <div>
               <p className="text-sm">Need a repair? our address</p>
-              <p className="font-bold text-xl">Liza Street, New York</p>
+              <p className="font-bold md:text-xl">Liza Street, New York</p>
             </div>
           </div>
         </div>
@@ -125,12 +127,12 @@ const HomePage = () => {
           ))}
         </div>
         <div className="flex justify-center font-bold ">
-          <button className=" btn btn-outline btn-error md:my-10 my-5">
+          <button className=" btn btn-outline btn-error md:mt-10 my-5">
             More Products
           </button>
         </div>
       </div>
-      <div>
+      <div className="space-y-2">
         <div>
           <TitleSubTitle
             heading={"Team"}
@@ -142,7 +144,7 @@ const HomePage = () => {
         </div>
       </div>
       <div>
-        <div>
+        <div className="space-y-2">
           <TitleSubTitle
             heading={"Core Features"}
             title={"Why Choose Us"}
@@ -150,6 +152,38 @@ const HomePage = () => {
               "The majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. "
             }
           ></TitleSubTitle>
+        </div>
+        <div className="grid gap-4 mt-5 lg:grid-cols-5 grid-cols-3 justify-between items-center">
+          <div className="border-2 md:p-4 p-2 hover:text-white rounded-lg text-center hover:bg-[#FF3811]">
+            <div className="flex justify-center">
+              <img src={check} alt="" />
+            </div>
+            <p className="font-bold md:text-xl">Timely Delivery</p>
+          </div>
+          <div className="border-2 md:p-4 p-2 hover:text-white rounded-lg text-center hover:bg-[#FF3811]">
+            <div className="flex justify-center">
+              <img src={group} alt="" />
+            </div>
+            <p className="font-bold md:text-xl">Expert Team</p>
+          </div>
+          <div className="border-2 md:p-4 p-2 hover:text-white rounded-lg text-center hover:bg-[#FF3811]">
+            <div className="flex justify-center">
+              <img src={people} alt="" />
+            </div>
+            <p className="font-bold md:text-xl">24/7 Support</p>
+          </div>
+          <div className="border-2 md:p-4 p-2 hover:text-white rounded-lg text-center hover:bg-[#FF3811]">
+            <div className="flex justify-center">
+              <img src={Wrench} alt="" />
+            </div>
+            <p className="font-bold md:text-xl">Best Equipment</p>
+          </div>
+          <div className="border-2 md:p-4 p-2 hover:text-white rounded-lg text-center hover:bg-[#FF3811]">
+            <div className="flex justify-center">
+              <img src={deliveryt} alt="" />
+            </div>
+            <p className="font-bold md:text-xl">Timely Delivery</p>
+          </div>
         </div>
       </div>
       <div>
