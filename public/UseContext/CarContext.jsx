@@ -1,6 +1,6 @@
 import React, { createContext } from "react";
 import { getAuth } from "firebase/auth";
-import { app } from "../public/Firebase/Firebase";
+import { app } from "../Firebase/Firebase";
 const auth = getAuth(app);
 export const CarContextAuth = createContext();
 const CarContext = ({ children }) => {

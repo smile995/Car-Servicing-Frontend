@@ -3,7 +3,8 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import { RouterProvider } from "react-router-dom";
 import router from "./Routers/Routers.jsx";
-import CarContext from "../UseContext/CarContext.jsx";
+import CarContext from "../public/UseContext/CarContext.jsx";
+
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

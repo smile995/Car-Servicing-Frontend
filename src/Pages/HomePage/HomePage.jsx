@@ -2,19 +2,29 @@ import Banner from "../../Components/Banner/Banner";
 import TitleSubTitle from "../../Components/SertionTitle/TitleSubTitle";
 import person from "../../assets/images/about_us/person.jpg";
 import parts from "../../assets/images/about_us/parts.jpg";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ServicesCard from "../../Components/ServicesCard/ServicesCard";
-import { CarContextAuth } from "../../../UseContext/CarContext";
+import ProductCard from "../../Components/ProductCard/ProductCard";
+import {
+  FaPhone,
+  FaPhoneAlt,
+  FaPhoneSlash,
+  FaRegCalendar,
+} from "react-icons/fa";
+import { FaMapLocation } from "react-icons/fa6";
 
 const HomePage = () => {
-  const {name}=useContext(CarContextAuth)
-  console.log({name});
-  
+  const [products, setProduct] = useState([]);
   const [services, setServices] = useState([]);
   useEffect(() => {
     fetch("services.json")
       .then((res) => res.json())
       .then((service) => setServices(service));
+  }, []);
+  useEffect(() => {
+    fetch("products.json")
+      .then((res) => res.json())
+      .then((data) => setProduct(data));
   }, []);
   return (
     <div className="lg:space-y-20 space-y-10">
@@ -61,11 +71,45 @@ const HomePage = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((service) => (
-            <ServicesCard service={service} key={service._id} ></ServicesCard>
+            <ServicesCard service={service} key={service._id}></ServicesCard>
           ))}
         </div>
+        <div className="flex justify-center font-bold ">
+          <button className=" btn btn-outline btn-error md:my-10 my-5">
+            More Services
+          </button>
+        </div>
+        <div className="bg-[#151515] flex justify-evenly text-white m text-2xl md:py-16 p-3 rounded-xl">
+          <div className="flex items-center gap-3">
+            <div>
+              <FaRegCalendar className=" font-bold text-[#FF3811]"></FaRegCalendar>
+            </div>
+            <div>
+              <p className="text-sm">We are open monday-friday</p>
+              <p className="font-bold text-xl">7:00 am - 9:00 pm</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <div>
+              <FaPhoneAlt className=" font-bold text-[#FF3811]"></FaPhoneAlt>
+            </div>
+            <div>
+              <p className="text-sm">Have a question?</p>
+              <p className="font-bold text-xl">+2546 251 2658</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <div>
+              <FaMapLocation className=" font-bold text-[#FF3811]"></FaMapLocation>
+            </div>
+            <div>
+              <p className="text-sm">Need a repair? our address</p>
+              <p className="font-bold text-xl">Liza Street, New York</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div>
+      <div className="space-y-2">
         <div>
           <TitleSubTitle
             heading={"Popular Products"}
@@ -74,6 +118,16 @@ const HomePage = () => {
               "The majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.  "
             }
           ></TitleSubTitle>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {products.map((product) => (
+            <ProductCard product={product} key={product.id}></ProductCard>
+          ))}
+        </div>
+        <div className="flex justify-center font-bold ">
+          <button className=" btn btn-outline btn-error md:my-10 my-5">
+            More Products
+          </button>
         </div>
       </div>
       <div>
