@@ -1,8 +1,12 @@
 import "../../index.css";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo.svg";
+import { useContext } from "react";
+import { CarContextAuth } from "../../../public/UseContext/CarContext";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const { user,userSignOut } = useContext(CarContextAuth);
   const nabManu = (
     <>
       <li>
@@ -20,9 +24,22 @@ const Navbar = () => {
       <li>
         <NavLink to={"/contact"}>Contact</NavLink>
       </li>
+      
     </>
   );
+const handleSignOut=()=>{
+  userSignOut().then(()=>{
+    Swal.fire({
+      icon: "success",
+      title: "SuccessFully Loged out",
+      text: "Something went wrong!",
+      
+    });
+    
+  })
 
+  
+}
   return (
     <>
       <div className="navbar bg-base-100">
@@ -52,8 +69,7 @@ const Navbar = () => {
             </ul>
           </div>
           <div>
-            <Link to={"/"}
-            >
+            <Link to={"/"}>
               <img className="md:w-20 w-16" src={logo} alt="logo" />
             </Link>
           </div>
@@ -62,6 +78,24 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{nabManu}</ul>
         </div>
         <div className="navbar-end gap-5">
+          {user ? (
+            <button onClick={handleSignOut} className="btn bg-red-600 rounded  text-white font-samibold">
+              Sign Out
+            </button>
+          ) : (
+            <Link to={'/login'}>
+              <button className="btn bg-green-600 rounded  text-white font-samibold">Login</button>
+            </Link>
+          )}
+          {user ? (
+            <div className="avatar placeholder">
+              <div className="bg-neutral text-neutral-content w-12 rounded-full">
+                <span>SY</span>
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
           <button className="btn btn-outline btn-error">Appointment</button>
         </div>
       </div>

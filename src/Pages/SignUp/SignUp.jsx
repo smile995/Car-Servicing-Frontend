@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaFacebook, FaGoogle, FaLinkedinIn } from "react-icons/fa";
 import img from "../../assets/images/login/login.svg";
 import { Link } from "react-router-dom";
+import { CarContextAuth } from "../../../public/UseContext/CarContext";
+
 const SignUp = () => {
+const {createUser,setUser}=useContext(CarContextAuth)
   const handleSignUp = (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.name.value;
+    // const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name,email,password);
+    createUser(email,password)
+    .then(result=>{
+      const user= result.user;
+      console.log(user);
+      
+      setUser(user)
+    }).catch(error=>console.log(error)
+    )
     
     // console.log(name, email, password);
   };
