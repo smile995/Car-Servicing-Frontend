@@ -3,8 +3,8 @@ import TopBanner from "../../Components/Top_Banner/TopBanner";
 
 const Services = () => {
   return <div>
-    <TopBanner></TopBanner>
-    Services
+    <TopBanner title={"Add New Services"} path={"Home/Service"}></TopBanner>
+  
     </div>;
 };
 
