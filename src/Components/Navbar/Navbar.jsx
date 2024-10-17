@@ -70,33 +70,35 @@ const handleSignOut=()=>{
           </div>
           <div>
             <Link to={"/"}>
-              <img className="md:w-20 w-16" src={logo} alt="logo" />
+              <img className="md:w-20 w-10" src={logo} alt="logo" />
             </Link>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{nabManu}</ul>
         </div>
-        <div className="navbar-end gap-5">
+        <div className="navbar-end md:gap-5 gap-2">
           {user ? (
-            <button onClick={handleSignOut} className="btn bg-red-600 rounded  text-white font-samibold">
-              Sign Out
-            </button>
+           
+            <button onClick={handleSignOut} className="btn btn-xs sm:btn-sm md:btn-md   bg-red-600 rounded  text-white font-samibold">Sign Out</button>
           ) : (
             <Link to={'/login'}>
-              <button className="btn bg-green-600 rounded  text-white font-samibold">Login</button>
+              {/* <button className="btn btn-error rounded  text-white font-samibold">Login</button> */}
+              <button  className="btn btn-xs sm:btn-sm md:btn-md   rounded  btn-error  font-samibold text-white font-samibold">Login</button>
             </Link>
           )}
           {user ? (
             <div className="avatar placeholder">
-              <div className="bg-neutral text-neutral-content w-12 rounded-full">
-                <span>SY</span>
+              <div className="bg-neutral text-neutral-content md:w-12 w-8 rounded-full">
+                <span>{
+                  user.email.slice(0,2)}</span>
               </div>
             </div>
           ) : (
             ""
           )}
-          <button className="btn btn-outline btn-error">Appointment</button>
+         
+          <button className="btn btn-outline btn-error btn-xs sm:btn-sm md:btn-md ">Appointment</button>
         </div>
       </div>
     </>

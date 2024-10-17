@@ -14,10 +14,14 @@ const ServicesCard = ({ service }) => {
           <p className="text-xl font-semibold text-[#FF3811]">
             Price: ${price}
           </p>
-          <button className="btn btn-circle text-xl text-[#FF3811] font-semibold
-            border-0 btn-outline">
-            <FaArrowRight></FaArrowRight>
-          </button>
+          <div className="tooltip" data-tip="Details">
+            <button
+              className="btn hover:bg-[#FF3811] btn-circle text-xl text-[#FF3811] font-semibold
+            border-0 btn-outline"
+            >
+              <FaArrowRight></FaArrowRight>
+            </button>
+          </div>
         </div>
       </div>
     </div>

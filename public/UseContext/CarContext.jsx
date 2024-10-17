@@ -3,7 +3,8 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
-  signOut
+  signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 import { app } from "../Firebase/Firebase";
 const auth = getAuth(app);
@@ -15,9 +16,12 @@ const CarContext = ({ children }) => {
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
-  const userSignOut=()=>{
-    return signOut(auth)
-  }
+  const userSignOut = () => {
+    return signOut(auth);
+  };
+  const userLogIn = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
   useEffect(() => {
     const currentUser = onAuthStateChanged(auth, (user) => {
       setUser(user);
@@ -30,7 +34,9 @@ const CarContext = ({ children }) => {
     createUser,
     user,
     loading,
-    setUser,userSignOut,
+    setUser,
+    userSignOut,
+    userLogIn,
   };
   return (
     <CarContextAuth.Provider value={GlobalData}>

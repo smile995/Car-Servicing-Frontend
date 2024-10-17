@@ -1,27 +1,31 @@
 import React, { useContext } from "react";
 import { FaFacebook, FaGoogle, FaLinkedinIn } from "react-icons/fa";
 import img from "../../assets/images/login/login.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CarContextAuth } from "../../../public/UseContext/CarContext";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
-const {createUser,setUser}=useContext(CarContextAuth)
+  const navigate = useNavigate();
+  const { createUser, setUser } = useContext(CarContextAuth);
   const handleSignUp = (e) => {
     e.preventDefault();
     const form = e.target;
     // const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    createUser(email,password)
-    .then(result=>{
-      const user= result.user;
-      console.log(user);
-      
-      setUser(user)
-    }).catch(error=>console.log(error)
-    )
-    
-    // console.log(name, email, password);
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        Swal.fire({
+          icon: "success",
+          title: "You are successfully signed up",
+        });
+      })
+      .catch((error) => console.log(error));
+    navigate("/");
+    form.reset();
   };
   return (
     <div className="md:flex justify-around items-center">
@@ -66,7 +70,6 @@ const {createUser,setUser}=useContext(CarContextAuth)
               className="input input-bordered"
               required
             />
-        
           </div>
           <div className="form-control mt-6">
             <input className="btn btn-error" type="submit" value="Sign up" />

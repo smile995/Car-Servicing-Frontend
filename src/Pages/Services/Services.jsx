@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
+import TopBanner from "../../Components/Top_Banner/TopBanner";
 
 const Services = () => {
-  return (
-    <div>Services</div>
-  )
-}
+  return <div>
+    <TopBanner></TopBanner>
+    Services
+    </div>;
+};
 
-export default Services
+export default Services;

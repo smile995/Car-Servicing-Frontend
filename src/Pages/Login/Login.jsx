@@ -1,12 +1,34 @@
 import { FaArrowRight, FaFacebook, FaGoogle } from "react-icons/fa";
 import img from "../../assets/images/login/login.svg";
 import { FaLinkedinIn } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { CarContextAuth } from "../../../public/UseContext/CarContext";
+import Swal from "sweetalert2";
 
 const Login = () => {
+  const navigate= useNavigate()
+  const {userLogIn,setUser}= useContext(CarContextAuth)
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log("im comming");
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    userLogIn(email,password)
+    .then(result=>{
+      const user= result.user;
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "You are successfully login",
+        showConfirmButton: false,
+        timer: 1500
+      });
+      setUser(user)
+    }).then(error=>console.log(error)
+    )
+    form.reset()
+    navigate('/')
   };
   return (
     <div className="md:flex justify-around items-center">
@@ -23,6 +45,7 @@ const Login = () => {
             <input
               type="email"
               placeholder="email"
+              name="email"
               className="input input-bordered"
               required
             />
@@ -33,6 +56,7 @@ const Login = () => {
             </label>
             <input
               type="password"
+              name="password"
               placeholder="password"
               className="input input-bordered"
               required
@@ -57,10 +81,16 @@ const Login = () => {
               <FaLinkedinIn />
             </button>
             <button className="btn btn-circle text-3xl text-[#FF3811] font-semibold border-0 btn-outline">
-             <FaGoogle></FaGoogle>
+              <FaGoogle></FaGoogle>
             </button>
           </div>
-          <p className="text-center "> You have no account? <Link className="text-[#FF3811] font-bold">SignUp</Link></p>
+          <p className="text-center ">
+            {" "}
+            You have no account?{" "}
+            <Link to={"/signup"} className="text-[#FF3811] font-bold">
+              SignUp
+            </Link>
+          </p>
         </div>
       </div>
     </div>
