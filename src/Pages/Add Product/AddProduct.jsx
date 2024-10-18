@@ -1,5 +1,6 @@
 import React from "react";
 import TopBanner from "../../Components/Top_Banner/TopBanner";
+import Swal from "sweetalert2";
 
 const AddProduct = () => {
   const handleAddProduct = (event) => {
@@ -21,7 +22,26 @@ const AddProduct = () => {
       stock,
       rating,
     };
-    console.log(product);
+    fetch('http://localhost:5000/add-product',{
+      method:'POST',
+      headers:{ "Content-Type": "application/json"},
+      body:JSON.stringify(product)
+    })
+    .then(response=>response.json())
+    .then(data=>{
+      if(data.acknowledged===true){
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Product Added successfully",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        
+        form.reset()
+      }
+    }
+    )
   };
   return (
     <div className="space-y-20">
