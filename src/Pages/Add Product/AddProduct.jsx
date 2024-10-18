@@ -1,15 +1,32 @@
-import React from 'react'
-import TopBanner from '../../Components/Top_Banner/TopBanner'
+import React from "react";
+import TopBanner from "../../Components/Top_Banner/TopBanner";
 
 const AddProduct = () => {
-  const handleAddProduct=()=>{
-    console.log("product on the way");
-    
-  }
+  const handleAddProduct = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const productName = form.name.value;
+    const price = form.price.value;
+    const image = form.image.value;
+    const category = form.category.value;
+    const description = form.description.value;
+    const stock = form.stock.value;
+    const rating = form.stock.value;
+    const product = {
+      productName,
+      price,
+      image,
+      category,
+      description,
+      stock,
+      rating,
+    };
+    console.log(product);
+  };
   return (
-    <div className='space-y-20'>
-        <TopBanner title={'Add New Product'} path={"Home/Product"}/>
-        <div className="card bg-base-100 h-full  max-w-sm lg:max-w-full border-2 md:max-w-screen-md shadow-2xl mx-auto">
+    <div className="space-y-20">
+      <TopBanner title={"Add New Product"} path={"Home/Product"} />
+      <div className="card bg-base-100 h-full  max-w-sm lg:max-w-full border-2 md:max-w-screen-md shadow-2xl mx-auto">
         <form onSubmit={handleAddProduct} className="card-body">
           <div className="form-control">
             <h1 className="text-5xl font-bold text-center">
@@ -45,7 +62,7 @@ const AddProduct = () => {
           <div className="md:flex justify-between gap-10 items-center">
             <div className="form-control w-full ">
               <label className="label">
-                <span className="label-text">Image Link</span>
+                <span className="label-text">Product Photo</span>
               </label>
               <input
                 type="text"
@@ -57,11 +74,37 @@ const AddProduct = () => {
             </div>
             <div className="form-control w-full ">
               <label className="label">
-                <span className="label-text">Product Provider</span>
+                <span className="label-text">Product Category</span>
               </label>
               <input
                 type="text"
-                name="server"
+                name="category"
+                placeholder="Product Category"
+                className="input input-bordered w-full"
+                required
+              />
+            </div>
+          </div>
+          <div className="md:flex justify-between gap-10 items-center">
+            <div className="form-control w-full ">
+              <label className="label">
+                <span className="label-text">Product Stock</span>
+              </label>
+              <input
+                type="text"
+                name="stock"
+                placeholder="Product Stock"
+                className="input input-bordered w-full"
+                required
+              />
+            </div>
+            <div className="form-control w-full ">
+              <label className="label">
+                <span className="label-text">Product Rating</span>
+              </label>
+              <input
+                type="text"
+                name="rating"
                 placeholder="Server Provider"
                 className="input input-bordered w-full"
                 required
@@ -74,11 +117,10 @@ const AddProduct = () => {
             </label>
             <textarea
               type="text"
-              name="server"
+              name="description"
               placeholder="Server Description"
               className="input input-bordered w-full min-h-40"
               required
-              
             ></textarea>
           </div>
           <div className="form-control mt-6">
@@ -91,7 +133,7 @@ const AddProduct = () => {
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AddProduct
+export default AddProduct;

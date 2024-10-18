@@ -1,8 +1,11 @@
+import TopBanner from "../../Components/Top_Banner/TopBanner"
 
 
 const Blog = () => {
   return (
-    <div>Blog</div>
+    <div>
+   <TopBanner title={"Our Blogs"} path={"Home/Path"}/>
+    </div>
   )
 }
 

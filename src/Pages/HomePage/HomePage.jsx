@@ -19,10 +19,11 @@ const HomePage = () => {
   const [products, setProduct] = useState([]);
   const [services, setServices] = useState([]);
   useEffect(() => {
-    fetch("services.json")
+    fetch("http://localhost:5000/services")
       .then((res) => res.json())
       .then((service) => setServices(service));
   }, []);
+  
   useEffect(() => {
     fetch("products.json")
       .then((res) => res.json())

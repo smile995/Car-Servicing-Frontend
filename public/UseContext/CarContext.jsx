@@ -30,6 +30,8 @@ const CarContext = ({ children }) => {
       return currentUser();
     };
   }, []);
+
+
   const GlobalData = {
     createUser,
     user,
@@ -37,6 +39,7 @@ const CarContext = ({ children }) => {
     setUser,
     userSignOut,
     userLogIn,
+    
   };
   return (
     <CarContextAuth.Provider value={GlobalData}>

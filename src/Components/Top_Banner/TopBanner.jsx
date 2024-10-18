@@ -11,7 +11,7 @@ const TopBanner = ({title,path}) => {
       </h1>
 
       <div
-        className="bg-[#FF3811] text-white font-semibold text-center absolute bottom-0 left-1/2 transform -translate-x-1/2 md:px-10 px-5 py-1 md:py-2 text-xl "
+        className="bg-[#FF3811] text-white font-semibold text-center absolute bottom-0 left-1/2 transform -translate-x-1/2 md:px-10 px-5 py-1 md:py-2 md:text-xl "
         style={{
           clipPath: "polygon(12% 0%, 88% 0%, 100% 100%, 0% 100%)",
         }}
