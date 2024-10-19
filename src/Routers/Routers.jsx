@@ -13,6 +13,8 @@ import AddService from "../Pages/Services/AddService";
 import Details from "../Pages/DetailsPage/Details";
 import Booked from "../Pages/ServiceBook/Booked";
 import Orders from "../Pages/Orders/Orders";
+import ProductDetails from "../Pages/ProductDetails/ProductDetails";
+import ProductOrder from "../Pages/ProductOrder/ProductOrder";
 
 
 const router = createBrowserRouter([
@@ -67,9 +69,19 @@ const router = createBrowserRouter([
         element: <Details></Details>
       },
       {
+        path: "/product/:id",
+        loader:({params})=>fetch(`http://localhost:5000/product/${params.id}`),
+        element:<ProductDetails></ProductDetails>
+      },
+      {
         path: "/book/:id",
         loader:({params})=>fetch(`http://localhost:5000/service/${params.id}`),
         element: <Booked></Booked>
+      },
+      {
+        path: "/order/product/:id",
+        loader:({params})=>fetch(`http://localhost:5000/product/${params.id}`),
+        element: <ProductOrder></ProductOrder>
       },
     ],
   },
