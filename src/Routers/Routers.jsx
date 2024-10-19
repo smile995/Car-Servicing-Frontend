@@ -11,6 +11,7 @@ import Login from "../Pages/Login/Login";
 import AddProduct from "../Pages/Add Product/AddProduct";
 import AddService from "../Pages/Services/AddService";
 import Details from "../Pages/DetailsPage/Details";
+import Booked from "../Pages/ServiceBook/Booked";
 
 
 const router = createBrowserRouter([
@@ -59,6 +60,11 @@ const router = createBrowserRouter([
         path: "/service/:id",
         loader:({params})=>fetch(`http://localhost:5000/service/${params.id}`),
         element: <Details></Details>
+      },
+      {
+        path: "/book/:id",
+        loader:({params})=>fetch(`http://localhost:5000/service/${params.id}`),
+        element: <Booked></Booked>
       },
     ],
   },
