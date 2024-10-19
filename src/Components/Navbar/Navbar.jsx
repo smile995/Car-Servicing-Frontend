@@ -30,6 +30,9 @@ const Navbar = () => {
       <li>
         <NavLink to={"/add-service"}>Add Service</NavLink>
       </li>
+      <li>
+        <NavLink to={"/my-orders"}>My Orders</NavLink>
+      </li>
       
     </>
   );
@@ -104,7 +107,6 @@ const handleSignOut=()=>{
             ""
           )}
          
-          <button className="btn btn-outline btn-error btn-xs sm:btn-sm md:btn-md ">Appointment</button>
         </div>
       </div>
     </>

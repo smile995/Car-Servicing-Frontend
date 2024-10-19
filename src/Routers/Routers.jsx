@@ -12,6 +12,7 @@ import AddProduct from "../Pages/Add Product/AddProduct";
 import AddService from "../Pages/Services/AddService";
 import Details from "../Pages/DetailsPage/Details";
 import Booked from "../Pages/ServiceBook/Booked";
+import Orders from "../Pages/Orders/Orders";
 
 
 const router = createBrowserRouter([
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
       {
         path: "/add-product",
         element: <AddProduct></AddProduct>
+      },
+      {
+        path: "/my-orders",
+        element: <Orders></Orders>
       },
       {
         path: "/add-service",
