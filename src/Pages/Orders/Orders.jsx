@@ -8,7 +8,9 @@ const Orders = () => {
   const [myServices, setMyServices] = useState([]);
   const [orders, setOrders] = useState([]);
   const userEmail = user?.email;
-  console.log(orders);
+
+  
+  
   useEffect(() => {
     fetch(`http://localhost:5000/bookings/${userEmail}`)
       .then((res) => res.json())

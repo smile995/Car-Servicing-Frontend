@@ -15,7 +15,7 @@ import Booked from "../Pages/ServiceBook/Booked";
 import Orders from "../Pages/Orders/Orders";
 import ProductDetails from "../Pages/ProductDetails/ProductDetails";
 import ProductOrder from "../Pages/ProductOrder/ProductOrder";
-
+import PrivateRoute from "../../public/PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -53,35 +53,43 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-product",
-        element: <AddProduct></AddProduct>
+        element: <AddProduct></AddProduct>,
       },
       {
         path: "/my-orders",
-        element: <Orders></Orders>
+        element: (
+          <PrivateRoute>
+            <Orders></Orders>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/add-service",
-        element: <AddService></AddService>
+        element: <AddService></AddService>,
       },
       {
         path: "/service/:id",
-        loader:({params})=>fetch(`http://localhost:5000/service/${params.id}`),
-        element: <Details></Details>
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/service/${params.id}`),
+        element: <Details></Details>,
       },
       {
         path: "/product/:id",
-        loader:({params})=>fetch(`http://localhost:5000/product/${params.id}`),
-        element:<ProductDetails></ProductDetails>
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/product/${params.id}`),
+        element: <ProductDetails></ProductDetails>,
       },
       {
         path: "/book/:id",
-        loader:({params})=>fetch(`http://localhost:5000/service/${params.id}`),
-        element: <Booked></Booked>
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/service/${params.id}`),
+        element: <Booked></Booked>,
       },
       {
         path: "/order/product/:id",
-        loader:({params})=>fetch(`http://localhost:5000/product/${params.id}`),
-        element: <ProductOrder></ProductOrder>
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/product/${params.id}`),
+        element: <ProductOrder></ProductOrder>,
       },
     ],
   },
