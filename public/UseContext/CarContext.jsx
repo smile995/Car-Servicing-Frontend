@@ -6,8 +6,9 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { app } from "../Firebase/Firebase";
-const auth = getAuth(app);
+import auth from "../Firebase/Firebase.Config";
+
+// const auth = getAuth(app);
 export const CarContextAuth = createContext();
 
 const CarContext = ({ children }) => {

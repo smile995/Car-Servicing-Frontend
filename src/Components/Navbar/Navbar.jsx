@@ -6,7 +6,7 @@ import { CarContextAuth } from "../../../public/UseContext/CarContext";
 import Swal from "sweetalert2";
 
 const Navbar = () => {
-  const { user,userSignOut } = useContext(CarContextAuth);
+  const { user, userSignOut } = useContext(CarContextAuth);
   const nabManu = (
     <>
       <li>
@@ -24,31 +24,30 @@ const Navbar = () => {
       <li>
         <NavLink to={"/contact"}>Contact</NavLink>
       </li>
-      <li>
-        <NavLink to={"/add-product"}>Add Product</NavLink>
-      </li>
-      <li>
-        <NavLink to={"/add-service"}>Add Service</NavLink>
-      </li>
-      <li>
-        <NavLink to={"/my-orders"}>My Orders</NavLink>
-      </li>
+      {
+        user ? (
+          <><li>
+            <NavLink to={"/add-product"}>Add Product</NavLink>
+          </li><li>
+              <NavLink to={"/add-service"}>Add Service</NavLink>
+            </li><li>
+              <NavLink to={"/my-orders"}>My Orders</NavLink>
+            </li></>
+        )
+        :""
+      }
       
     </>
   );
-const handleSignOut=()=>{
-  userSignOut().then(()=>{
-    Swal.fire({
-      icon: "success",
-      title: "SuccessFully Loged out",
-      text: "Something went wrong!",
-      
+  const handleSignOut = () => {
+    userSignOut().then(() => {
+      Swal.fire({
+        icon: "success",
+        title: "SuccessFully Loged out",
+        text: "Something went wrong!",
+      });
     });
-    
-  })
-
-  
-}
+  };
   return (
     <>
       <div className="navbar bg-base-100">
@@ -88,25 +87,29 @@ const handleSignOut=()=>{
         </div>
         <div className="navbar-end md:gap-5 gap-2">
           {user ? (
-           
-            <button onClick={handleSignOut} className="btn btn-xs sm:btn-sm md:btn-md   bg-red-600 rounded  text-white font-samibold">Sign Out</button>
+            <button
+              onClick={handleSignOut}
+              className="btn btn-xs sm:btn-sm md:btn-md   bg-red-600 rounded  text-white font-samibold"
+            >
+              Sign Out
+            </button>
           ) : (
-            <Link to={'/login'}>
+            <Link to={"/login"}>
               {/* <button className="btn btn-error rounded  text-white font-samibold">Login</button> */}
-              <button  className="btn btn-xs sm:btn-sm md:btn-md   rounded  btn-error  font-samibold text-white font-samibold">Login</button>
+              <button className="btn btn-xs sm:btn-sm md:btn-md   rounded  btn-error  font-samibold text-white font-samibold">
+                Login
+              </button>
             </Link>
           )}
           {user ? (
             <div className="avatar placeholder">
               <div className="bg-neutral text-neutral-content md:w-12 w-8 rounded-full">
-                <span>{
-                  user.email.slice(0,2)}</span>
+                <span>{user.email.slice(0, 2)}</span>
               </div>
             </div>
           ) : (
             ""
           )}
-         
         </div>
       </div>
     </>
