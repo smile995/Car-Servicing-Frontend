@@ -15,7 +15,7 @@ import Booked from "../Pages/ServiceBook/Booked";
 import Orders from "../Pages/Orders/Orders";
 import ProductDetails from "../Pages/ProductDetails/ProductDetails";
 import ProductOrder from "../Pages/ProductOrder/ProductOrder";
-import PrivateRoute from "../../public/PrivateRoute/PrivateRoute";
+
 
 
 const router = createBrowserRouter([

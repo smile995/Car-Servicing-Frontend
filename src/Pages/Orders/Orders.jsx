@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import TopBanner from "../../Components/Top_Banner/TopBanner";
 import { CarContextAuth } from "../../../public/UseContext/CarContext";
+import Swal from "sweetalert2";
+import axios from "axios";
 
 const Orders = () => {
   const { user } = useContext(CarContextAuth);
@@ -9,8 +11,6 @@ const Orders = () => {
   const [orders, setOrders] = useState([]);
   const userEmail = user?.email;
 
-  
-  
   useEffect(() => {
     fetch(`http://localhost:5000/bookings/${userEmail}`)
       .then((res) => res.json())
@@ -21,6 +21,49 @@ const Orders = () => {
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, []);
+
+  const handleDeleteService = (id) => {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger",
+      },
+      buttonsStyling: false,
+    });
+    swalWithBootstrapButtons
+      .fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          axios.delete(`http://localhost:5000/service/${id}`).then((res) => {
+            console.log(res.data);
+            if (res.data.deletedCount > 0) {
+              swalWithBootstrapButtons.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
+            }
+          });
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire({
+            title: "Cancelled",
+            text: "Your imaginary file is safe :)",
+            icon: "error",
+          });
+        }
+      });
+  };
   return (
     <div className="space-y-10">
       <TopBanner title={"My Orders"} path={"Home/My-Oredrs"} />
@@ -42,6 +85,7 @@ const Orders = () => {
                 {/* Table Head */}
                 <thead>
                   <tr>
+                    <th className="text-left">Delete</th>
                     <th className="text-left">Image</th>
                     <th className="text-left">Total</th>
                     <th className="text-left">Due</th>
@@ -53,7 +97,28 @@ const Orders = () => {
                 {/* Table Body */}
                 <tbody className="space-y-5">
                   {myServices?.map((booking) => (
-                    <tr key={booking?.id} className="border-b">
+                    <tr key={booking?._id} className="border-b">
+                      <td>
+                        <button
+                          onClick={() => handleDeleteService(booking?._id)}
+                          className="btn btn-circle btn-outline"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M6 18L18 6M6 6l12 12"
+                            />
+                          </svg>
+                        </button>
+                      </td>
                       <td>
                         <div className="flex items-center md:gap-3 gap-1">
                           <div className="avatar">
