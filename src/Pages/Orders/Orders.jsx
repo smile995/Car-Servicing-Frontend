@@ -43,13 +43,15 @@ const Orders = () => {
       .then((result) => {
         if (result.isConfirmed) {
           axios.delete(`http://localhost:5000/service/${id}`).then((res) => {
-            console.log(res.data);
             if (res.data.deletedCount > 0) {
               swalWithBootstrapButtons.fire({
                 title: "Deleted!",
                 text: "Your file has been deleted.",
                 icon: "success",
               });
+
+              const remaining=myServices.filter(service=>service._id!==id)
+              setMyServices(remaining)
             }
           });
         } else if (
@@ -64,6 +66,28 @@ const Orders = () => {
         }
       });
   };
+
+  const handleUpdateStatus=(id)=>{
+    console.log(id);
+    axios.patch(`http://localhost:5000/service/${id}`,{status:"confirm"})
+    .then(res=>{
+      console.log(res.data);
+      if(res.data.modifiedCount>0){
+        Swal.fire({
+          icon: "success",
+          title: "Service Confirmed",
+          text: "Successfully confirmed service",
+          
+        });
+        const remaining= myServices.filter(service=> service._id!==id)
+        const update= myServices.find(service=>service._id===id)
+        update.status="confirm"
+        const newBooking= [update,...remaining]
+        setMyServices (newBooking)
+      }
+      
+    })
+  }
   return (
     <div className="space-y-10">
       <TopBanner title={"My Orders"} path={"Home/My-Oredrs"} />
@@ -90,7 +114,7 @@ const Orders = () => {
                     <th className="text-left">Total</th>
                     <th className="text-left">Due</th>
                     <th className="text-left">Date</th>
-                    <th className="text-left">Action</th>
+                    <th className="text-left">Status</th>
                     <th></th>
                   </tr>
                 </thead>
@@ -138,9 +162,13 @@ const Orders = () => {
                       <td>{booking?.due}</td>
                       <td>{booking?.date}</td>
                       <td>
-                        <button className="btn btn-ghost btn-xs">
-                          details
-                        </button>
+                       {
+                        booking?.status ?<p className="font-semibold text-green-500">Confirmed</p> : <button onClick=       
+                         {()=>handleUpdateStatus(booking._id)} className="btn btn-ghost btn-  
+                          xs">
+                        Please Confirm
+                      </button>
+                       }
                       </td>
                     </tr>
                   ))}

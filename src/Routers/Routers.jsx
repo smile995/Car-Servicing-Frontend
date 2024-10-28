@@ -15,6 +15,7 @@ import Booked from "../Pages/ServiceBook/Booked";
 import Orders from "../Pages/Orders/Orders";
 import ProductDetails from "../Pages/ProductDetails/ProductDetails";
 import ProductOrder from "../Pages/ProductOrder/ProductOrder";
+import PrivateRoute from "../../public/PrivateRoute/PrivateRoute";
 
 
 
@@ -67,17 +68,17 @@ const router = createBrowserRouter([
       {
         path: "/service/:id",
         loader:({params})=>fetch(`http://localhost:5000/service/${params.id}`),
-        element: <Details></Details>
+        element: <PrivateRoute><Details></Details></PrivateRoute>
       },
       {
         path: "/product/:id",
         loader:({params})=>fetch(`http://localhost:5000/product/${params.id}`),
-        element:<ProductDetails></ProductDetails>
+        element:<PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>
       },
       {
         path: "/book/:id",
         loader:({params})=>fetch(`http://localhost:5000/service/${params.id}`),
-        element: <Booked></Booked>
+        element: <PrivateRoute><Booked></Booked></PrivateRoute>
       },
       {
         path: "/order/product/:id",

@@ -1,7 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
-  getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
@@ -18,14 +17,17 @@ const CarContext = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
   const userSignOut = () => {
+    setLoadibg(false)
     return signOut(auth);
   };
   const userLogIn = (email, password) => {
+    setLoadibg(false)
     return signInWithEmailAndPassword(auth, email, password);
   };
   useEffect(() => {
     const currentUser = onAuthStateChanged(auth, (user) => {
       setUser(user);
+      setLoadibg(false)
     });
     return () => {
       return currentUser();

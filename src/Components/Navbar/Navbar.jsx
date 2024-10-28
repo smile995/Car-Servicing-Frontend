@@ -25,7 +25,7 @@ const Navbar = () => {
         <NavLink to={"/contact"}>Contact</NavLink>
       </li>
       {
-        user ? (
+        user && (
           <><li>
             <NavLink to={"/add-product"}>Add Product</NavLink>
           </li><li>
@@ -34,7 +34,7 @@ const Navbar = () => {
               <NavLink to={"/my-orders"}>My Orders</NavLink>
             </li></>
         )
-        :""
+        
       }
       
     </>

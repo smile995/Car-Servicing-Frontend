@@ -4,7 +4,7 @@ import { Navigate, useLocation } from "react-router-dom";
 
 const PrivateRoute = ({ children }) => {
   const { loading, user } = useContext(CarContextAuth);
-  const location = useLocation();
+  const location=useLocation()
 
   if (loading) {
     return (
@@ -17,11 +17,11 @@ const PrivateRoute = ({ children }) => {
     );
   }
 
-  if (user?.email) {
+  if (user) {
     return children;
-  } else {
-    return <Navigate to="/login" state={{ from: location }} replace />;
   }
+
+  return <Navigate to="/login" state={location.pathname} replace />;
 };
 
 export default PrivateRoute;

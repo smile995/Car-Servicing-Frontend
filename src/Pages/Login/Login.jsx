@@ -1,34 +1,45 @@
-import { FaArrowRight, FaFacebook, FaGoogle } from "react-icons/fa";
+import { FaFacebook, FaGoogle } from "react-icons/fa";
 import img from "../../assets/images/login/login.svg";
 import { FaLinkedinIn } from "react-icons/fa6";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { CarContextAuth } from "../../../public/UseContext/CarContext";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const Login = () => {
-  const navigate= useNavigate()
-  const {userLogIn,setUser}= useContext(CarContextAuth)
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location);
+
+  const { userLogIn, setUser } = useContext(CarContextAuth);
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    userLogIn(email,password)
-    .then(result=>{
-      const user= result.user;
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "You are successfully login",
-        showConfirmButton: false,
-        timer: 1500
-      });
-      setUser(user)
-    }).then(error=>console.log(error)
-    )
-    form.reset()
-    navigate('/')
+    userLogIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        const token={email}
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "You are successfully login",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        setUser(user);
+        // navigate(location?.state ? location?.state : "/");
+        // form.reset();
+        axios.post("http://localhost:5000/jwt",token)
+        .then(res=>{
+          console.log(res.data);
+          
+        }).catch(error=>console.log(error)
+        )
+      })
+      .then((error) => console.log(error));
   };
   return (
     <div className="md:flex justify-around items-center">
