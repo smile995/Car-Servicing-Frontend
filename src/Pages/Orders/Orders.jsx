@@ -21,9 +21,6 @@ const Orders = () => {
   useEffect(() => {
     axios.get(`http://localhost:5000/order/${userEmail}`,{withCredentials:true})
     .then(res=>setOrders(res.data))
-    // fetch(`http://localhost:5000/order/${userEmail}`)
-    //   .then((res) => res.json())
-    //   .then((data) => setOrders(data));
   }, []);
 
   const handleDeleteService = (id) => {
