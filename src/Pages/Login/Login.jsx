@@ -32,7 +32,7 @@ const Login = () => {
         setUser(user);
         // navigate(location?.state ? location?.state : "/");
         // form.reset();
-        axios.post("http://localhost:5000/jwt",token)
+        axios.post("http://localhost:5000/jwt",token,{withCredentials:true})
         .then(res=>{
           console.log(res.data);
           

@@ -12,14 +12,18 @@ const Orders = () => {
   const userEmail = user?.email;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/bookings/${userEmail}`)
-      .then((res) => res.json())
-      .then((data) => setMyServices(data));
+    // fetch(`http://localhost:5000/bookings/${userEmail}`)
+    //   .then((res) => res.json())
+    //   .then((data) => setMyServices(data));
+      axios.get(`http://localhost:5000/bookings/${userEmail}`,{withCredentials:true})
+      .then(res=>setMyServices(res.data))
   }, []);
   useEffect(() => {
-    fetch(`http://localhost:5000/order/${userEmail}`)
-      .then((res) => res.json())
-      .then((data) => setOrders(data));
+    axios.get(`http://localhost:5000/order/${userEmail}`,{withCredentials:true})
+    .then(res=>setOrders(res.data))
+    // fetch(`http://localhost:5000/order/${userEmail}`)
+    //   .then((res) => res.json())
+    //   .then((data) => setOrders(data));
   }, []);
 
   const handleDeleteService = (id) => {
