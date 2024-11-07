@@ -1,25 +1,24 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import TopBanner from "../../Components/Top_Banner/TopBanner";
-import { CarContextAuth } from "../../../public/UseContext/CarContext";
 import Swal from "sweetalert2";
 import axios from "axios";
+import useAuthContext from "../../Hooks/useAuthContext";
+import UseDataFetch from "../../Hooks/UseDataFetch";
 
 const Orders = () => {
-  const { user } = useContext(CarContextAuth);
+  const { user } = useAuthContext();
 
   const [myServices, setMyServices] = useState([]);
   const [orders, setOrders] = useState([]);
 
-  
+  // const myServices= UseDataFetch(`http://localhost:5000/bookings/${user.email}`)
 
   useEffect(() => {
-    // fetch(`http://localhost:5000/bookings/${userEmail}`)
-    //   .then((res) => res.json())
-    //   .then((data) => setMyServices(data));
       axios.get(`http://localhost:5000/bookings/${user?.email}`,{withCredentials:true})
       .then(res=>setMyServices(res.data))
   }, []);
-  useEffect(() => {
+
+useEffect(() => {
     axios.get(`http://localhost:5000/order/${user?.email}`,{withCredentials:true})
     .then(res=>setOrders(res.data))
   }, []);

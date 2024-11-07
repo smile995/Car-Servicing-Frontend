@@ -5,14 +5,16 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { CarContextAuth } from "../../../public/UseContext/CarContext";
 import Swal from "sweetalert2";
+import useAuthContext from "../../Hooks/useAuthContext";
 
 
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   console.log(location);
+const {userLogIn, setUser}=useAuthContext()
+  // const { userLogIn, setUser } = useContext(CarContextAuth);
 
-  const { userLogIn, setUser } = useContext(CarContextAuth);
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;

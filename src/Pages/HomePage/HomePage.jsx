@@ -14,21 +14,11 @@ import people from "../../assets/icons/person.svg";
 
 import { FaPhoneAlt, FaRegCalendar } from "react-icons/fa";
 import { FaMapLocation } from "react-icons/fa6";
+import UseDataFetch from "../../Hooks/UseDataFetch";
 
 const HomePage = () => {
-  const [products, setProduct] = useState([]);
-  const [services, setServices] = useState([]);
-  useEffect(() => {
-    fetch("http://localhost:5000/services")
-      .then((res) => res.json())
-      .then((service) => setServices(service));
-  }, []);
-  
-  useEffect(() => {
-    fetch("http://localhost:5000/products")
-      .then((res) => res.json())
-      .then((data) => setProduct(data));
-  }, []);
+  const services= UseDataFetch("http://localhost:5000/services")
+  const products= UseDataFetch("http://localhost:5000/products")
   return (
     <div className="lg:space-y-20 space-y-10">
       <Banner></Banner>
@@ -73,7 +63,7 @@ const HomePage = () => {
           ></TitleSubTitle>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {services.map((service) => (
+          {services?.map((service) => (
             <ServicesCard service={service} key={service._id}></ServicesCard>
           ))}
         </div>
@@ -123,7 +113,7 @@ const HomePage = () => {
           ></TitleSubTitle>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {products.map((product) => (
+          {products?.map((product) => (
             <ProductCard product={product} key={product._id}></ProductCard>
           ))}
         </div>

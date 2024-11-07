@@ -1,12 +1,12 @@
 import "../../index.css";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo.svg";
-import { useContext } from "react";
-import { CarContextAuth } from "../../../public/UseContext/CarContext";
 import Swal from "sweetalert2";
+import useAuthContext from "../../Hooks/useAuthContext";
 
 const Navbar = () => {
-  const { user, userSignOut } = useContext(CarContextAuth);
+  const {user, userSignOut}= useAuthContext()
+  // const { user, userSignOut } = useContext(CarContextAuth);
   const nabManu = (
     <>
       <li>

@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import { CarContextAuth } from "../UseContext/CarContext";
 import { Navigate, useLocation } from "react-router-dom";
+import useAuthContext from "../../src/Hooks/useAuthContext";
 
 const PrivateRoute = ({ children }) => {
-  const { loading, user } = useContext(CarContextAuth);
+
+  const { loading, user } = useAuthContext()
   const location=useLocation()
 
   if (loading) {
