@@ -5,7 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { CarContextAuth } from "../../../public/UseContext/CarContext";
 import Swal from "sweetalert2";
-import axios from "axios";
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -21,23 +21,16 @@ const Login = () => {
     userLogIn(email, password)
       .then((result) => {
         const user = result.user;
-        const token={email}
+
         Swal.fire({
-          position: "top-end",
           icon: "success",
-          title: "You are successfully login",
-          showConfirmButton: false,
-          timer: 1500,
+          title: "Successfull",
+          text: "You are successfully logged in",
+         
         });
         setUser(user);
-        // navigate(location?.state ? location?.state : "/");
-        // form.reset();
-        axios.post("http://localhost:5000/jwt",token,{withCredentials:true})
-        .then(res=>{
-          console.log(res.data);
-          
-        }).catch(error=>console.log(error)
-        )
+        navigate(location?.state ? location?.state : "/");
+        form.reset();
       })
       .then((error) => console.log(error));
   };

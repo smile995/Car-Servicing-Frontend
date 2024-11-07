@@ -9,17 +9,18 @@ const Orders = () => {
 
   const [myServices, setMyServices] = useState([]);
   const [orders, setOrders] = useState([]);
-  const userEmail = user?.email;
+
+  
 
   useEffect(() => {
     // fetch(`http://localhost:5000/bookings/${userEmail}`)
     //   .then((res) => res.json())
     //   .then((data) => setMyServices(data));
-      axios.get(`http://localhost:5000/bookings/${userEmail}`,{withCredentials:true})
+      axios.get(`http://localhost:5000/bookings/${user?.email}`,{withCredentials:true})
       .then(res=>setMyServices(res.data))
   }, []);
   useEffect(() => {
-    axios.get(`http://localhost:5000/order/${userEmail}`,{withCredentials:true})
+    axios.get(`http://localhost:5000/order/${user?.email}`,{withCredentials:true})
     .then(res=>setOrders(res.data))
   }, []);
 
