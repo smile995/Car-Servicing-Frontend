@@ -60,9 +60,8 @@ const orders= UseDataFetch(productUrl)
   };
 
   const handleUpdateStatus = (id) => {
-    console.log(id);
-    axios
-      .patch(`http://localhost:5000/service/${id}`, { status: "confirm" })
+  
+    axios.patch(`http://localhost:5000/service/${id}`, { status: "confirm" })
       .then((res) => {
         console.log(res.data);
         if (res.data.modifiedCount > 0) {

@@ -14,23 +14,23 @@ export const CarContextAuth = createContext();
 const CarContext = ({ children }) => {
   const [user, setUser] = useState();
 
-  const [loading, setLoadibg] = useState(true);
+  const [loading, setLoading] = useState(true);
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
   const userSignOut = () => {
-    setLoadibg(false)
+    setLoading(false)
     return signOut(auth);
   };
   const userLogIn = (email, password) => {
-    setLoadibg(false)
+    setLoading(false)
     return signInWithEmailAndPassword(auth, email, password);
   };
   useEffect(() => {
     const currentUser = onAuthStateChanged(auth, (currentUser) => {
       const userEmail= currentUser?.email || user?.email
       setUser(currentUser);  
-      setLoadibg(false)
+      setLoading(false)
       if(currentUser){
         axios.post('http://localhost:5000/jwt-token',{email:userEmail},{withCredentials:true})
         .then(res=> console.log(res.data) )
