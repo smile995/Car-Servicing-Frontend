@@ -15,11 +15,17 @@ import UseDataFetch from "../../Hooks/UseDataFetch";
 import CardSlider from "../../Components/SliderCard/CardSlider";
 import Reviews from "../../Components/Reviews/Reviews";
 import { Link } from "react-router-dom";
+import { useRef } from "react";
 
 const HomePage = () => {
   const services = UseDataFetch("http://localhost:5000/services");
   const products = UseDataFetch("http://localhost:5000/products");
+  const targetSection = useRef(null);
 
+  // Function to scroll to the target section
+  const scrollToSection = () => {
+    targetSection.current.scrollIntoView({ behavior: 'smooth' });
+  };
   return (
     <div className="lg:space-y-20 space-y-10">
       <Banner></Banner>
@@ -49,7 +55,7 @@ const HomePage = () => {
               injected humour, or randomised words which don't look even
               slightly believable.
             </p>
-            <Link to={'/about'}><button className="btn btn-error text-white">Get More Info</button></Link>
+            <button onClick={scrollToSection} className="btn btn-error text-white">Get More Info</button>
           </div>
         </div>
       </div>
@@ -124,7 +130,7 @@ const HomePage = () => {
           </button>
         </div>
       </div>
-      <div className="space-y-2">
+      <div ref={targetSection} className="space-y-2">
         <div className="mb-10">
           <TitleSubTitle
             heading={"Team"}
