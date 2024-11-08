@@ -13,7 +13,7 @@ import { FaPhoneAlt, FaRegCalendar } from "react-icons/fa";
 import { FaMapLocation } from "react-icons/fa6";
 import UseDataFetch from "../../Hooks/UseDataFetch";
 import CardSlider from "../../Components/SliderCard/CardSlider";
-
+import Reviews from "../../Components/Reviews/Reviews";
 
 const HomePage = () => {
   const services = UseDataFetch("http://localhost:5000/services");
@@ -134,8 +134,7 @@ const HomePage = () => {
           ></TitleSubTitle>
         </div>
 
-       <CardSlider></CardSlider>
-
+        <CardSlider></CardSlider>
       </div>
       <div>
         <div className="space-y-2">
@@ -180,7 +179,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <div>
+      <div className="space-y-2">
         <div>
           <TitleSubTitle
             heading={"Testimonial"}
@@ -189,6 +188,9 @@ const HomePage = () => {
               "The majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. "
             }
           ></TitleSubTitle>
+        </div>
+        <div className="mt-10">
+          <Reviews />
         </div>
       </div>
     </div>
