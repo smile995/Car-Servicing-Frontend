@@ -7,22 +7,11 @@ import UseDataFetch from "../../Hooks/UseDataFetch";
 
 const Orders = () => {
   const { user } = useAuthContext();
-
-  const [myServices, setMyServices] = useState([]);
-  const [orders, setOrders] = useState([]);
-
-  // const myServices= UseDataFetch(`http://localhost:5000/bookings/${user.email}`)
-
-  useEffect(() => {
-      axios.get(`http://localhost:5000/bookings/${user?.email}`,{withCredentials:true})
-      .then(res=>setMyServices(res.data))
-  }, []);
-
-useEffect(() => {
-    axios.get(`http://localhost:5000/order/${user?.email}`,{withCredentials:true})
-    .then(res=>setOrders(res.data))
-  }, []);
-
+  const serviceUrl = `http://localhost:5000/bookings/${user?.email}`;
+  const productUrl = `http://localhost:5000/order/${user?.email}`;
+  let myServices = UseDataFetch(serviceUrl);
+const orders= UseDataFetch(productUrl)
+ 
   const handleDeleteService = (id) => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -51,8 +40,10 @@ useEffect(() => {
                 icon: "success",
               });
 
-              const remaining=myServices.filter(service=>service._id!==id)
-              setMyServices(remaining)
+              const remaining = myServices.filter(
+                (service) => service._id !== id
+              );
+              setMyServices(remaining);
             }
           });
         } else if (
@@ -68,27 +59,26 @@ useEffect(() => {
       });
   };
 
-  const handleUpdateStatus=(id)=>{
+  const handleUpdateStatus = (id) => {
     console.log(id);
-    axios.patch(`http://localhost:5000/service/${id}`,{status:"confirm"})
-    .then(res=>{
-      console.log(res.data);
-      if(res.data.modifiedCount>0){
-        Swal.fire({
-          icon: "success",
-          title: "Service Confirmed",
-          text: "Successfully confirmed service",
-          
-        });
-        const remaining= myServices.filter(service=> service._id!==id)
-        const update= myServices.find(service=>service._id===id)
-        update.status="confirm"
-        const newBooking= [update,...remaining]
-        setMyServices (newBooking)
-      }
-      
-    })
-  }
+    axios
+      .patch(`http://localhost:5000/service/${id}`, { status: "confirm" })
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.modifiedCount > 0) {
+          Swal.fire({
+            icon: "success",
+            title: "Service Confirmed",
+            text: "Successfully confirmed service",
+          });
+          const remaining = myServices.filter((service) => service._id !== id);
+          const update = myServices.find((service) => service._id === id);
+          update.status = "confirm";
+          const newBooking = [update, ...remaining];
+          myServices= newBooking
+        }
+      });
+  };
   return (
     <div className="space-y-10">
       <TopBanner title={"My Orders"} path={"Home/My-Oredrs"} />
@@ -163,13 +153,19 @@ useEffect(() => {
                       <td>{booking?.due}</td>
                       <td>{booking?.date}</td>
                       <td>
-                       {
-                        booking?.status ?<p className="font-semibold text-green-500">Confirmed</p> : <button onClick=       
-                         {()=>handleUpdateStatus(booking._id)} className="btn btn-ghost btn-  
-                          xs">
-                        Please Confirm
-                      </button>
-                       }
+                        {booking?.status ? (
+                          <p className="font-semibold text-green-500">
+                            Confirmed
+                          </p>
+                        ) : (
+                          <button
+                            onClick={() => handleUpdateStatus(booking._id)}
+                            className="btn btn-ghost btn-  
+                          xs"
+                          >
+                            Please Confirm
+                          </button>
+                        )}
                       </td>
                     </tr>
                   ))}

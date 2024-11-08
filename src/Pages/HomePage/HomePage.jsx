@@ -2,23 +2,23 @@ import Banner from "../../Components/Banner/Banner";
 import TitleSubTitle from "../../Components/SertionTitle/TitleSubTitle";
 import person from "../../assets/images/about_us/person.jpg";
 import parts from "../../assets/images/about_us/parts.jpg";
-import { useEffect, useState } from "react";
 import ServicesCard from "../../Components/ServicesCard/ServicesCard";
 import ProductCard from "../../Components/ProductCard/ProductCard";
 import check from "../../assets/icons/check.svg";
-import quote from "../../assets/icons/quote.svg";
 import deliveryt from "../../assets/icons/deliveryt.svg";
 import Wrench from "../../assets/icons/Wrench.svg";
 import group from "../../assets/icons/group.svg";
 import people from "../../assets/icons/person.svg";
-
 import { FaPhoneAlt, FaRegCalendar } from "react-icons/fa";
 import { FaMapLocation } from "react-icons/fa6";
 import UseDataFetch from "../../Hooks/UseDataFetch";
+import CardSlider from "../../Components/SliderCard/CardSlider";
+
 
 const HomePage = () => {
-  const services= UseDataFetch("http://localhost:5000/services")
-  const products= UseDataFetch("http://localhost:5000/products")
+  const services = UseDataFetch("http://localhost:5000/services");
+  const products = UseDataFetch("http://localhost:5000/products");
+
   return (
     <div className="lg:space-y-20 space-y-10">
       <Banner></Banner>
@@ -124,7 +124,7 @@ const HomePage = () => {
         </div>
       </div>
       <div className="space-y-2">
-        <div>
+        <div className="mb-10">
           <TitleSubTitle
             heading={"Team"}
             title={"Meet Our Team"}
@@ -133,6 +133,9 @@ const HomePage = () => {
             }
           ></TitleSubTitle>
         </div>
+
+       <CardSlider></CardSlider>
+
       </div>
       <div>
         <div className="space-y-2">
