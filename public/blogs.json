@@ -1,0 +1,73 @@
+[
+  {
+    "id": 1,
+    "title": "The New Tesla Model S: A Comprehensive Review",
+    "author": "Jane Doe",
+    "authorImageUrl": "https://images.pexels.com/photos/3184406/pexels-photo-3184406.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "date": "2024-10-01",
+    "carModel": "Tesla Model S",
+    "summary": "A deep dive into the latest Tesla Model S, exploring its features, performance, and why it's a game-changer for electric vehicles.",
+    "content": "The Tesla Model S continues to be one of the most innovative electric vehicles on the market. This year’s model boasts a new battery architecture, increased range, and improved software capabilities...",
+    "tags": ["Tesla", "Electric Vehicles", "Review", "2024 Models"],
+    "imageUrl": "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    "id": 2,
+    "title": "Why the Ford Mustang Mach-E is Taking Over the EV Market",
+    "author": "John Smith",
+    "authorImageUrl": "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "date": "2024-09-15",
+    "carModel": "Ford Mustang Mach-E",
+    "summary": "The Mustang Mach-E has become a popular choice in the electric SUV segment. Here's why it’s shaking up the market.",
+    "content": "Ford’s Mustang Mach-E marks a bold step in the transition to electric SUVs, blending performance with environmental responsibility...",
+    "tags": ["Ford", "Mustang", "Electric Vehicles", "SUV"],
+    "imageUrl": "https://images.pexels.com/photos/116675/pexels-photo-116675.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    "id": 3,
+    "title": "Exploring the 2024 Porsche 911 Turbo: Speed Meets Luxury",
+    "author": "Emily Carter",
+    "authorImageUrl": "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "date": "2024-08-20",
+    "carModel": "Porsche 911 Turbo",
+    "summary": "The Porsche 911 Turbo remains an icon of speed and luxury. Here’s everything you need to know about the latest model.",
+    "content": "Porsche has perfected the blend of power and luxury with the 2024 911 Turbo. This model continues to deliver high performance along with advanced interior features...",
+    "tags": ["Porsche", "Luxury Cars", "Sports Cars", "2024 Models"],
+    "imageUrl": "https://images.pexels.com/photos/2127733/pexels-photo-2127733.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    "id": 4,
+    "title": "Toyota's 2024 Hybrid Lineup: Balancing Performance and Efficiency",
+    "author": "Michael Brown",
+    "authorImageUrl": "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "date": "2024-07-10",
+    "carModel": "Toyota Hybrid",
+    "summary": "Toyota’s new hybrid lineup provides a perfect balance between fuel efficiency and performance. Let's explore what each model has to offer.",
+    "content": "Toyota has expanded its hybrid lineup for 2024, offering enhanced fuel economy without compromising on performance. With updated models across its sedan and SUV ranges...",
+    "tags": ["Toyota", "Hybrid", "Efficiency", "2024 Models"],
+    "imageUrl": "https://images.pexels.com/photos/244206/pexels-photo-244206.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    "id": 5,
+    "title": "A Glimpse into the Future: The All-New Audi A8 e-tron",
+    "author": "Sarah Lin",
+    "authorImageUrl": "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "date": "2024-06-05",
+    "carModel": "Audi A8 e-tron",
+    "summary": "Audi’s latest A8 e-tron showcases the future of luxury EVs. Here’s a look at what makes this model so unique.",
+    "content": "With its sophisticated design and cutting-edge electric powertrain, the Audi A8 e-tron exemplifies the future of luxury electric vehicles...",
+    "tags": ["Audi", "Electric Vehicles", "Luxury Cars", "2024 Models"],
+    "imageUrl": "https://images.pexels.com/photos/100656/pexels-photo-100656.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },{
+    "id": 6,
+    "title": "The New Tesla Model S: A Comprehensive Review",
+    "author": "Jane Doe",
+    "authorImageUrl": "https://images.pexels.com/photos/3184406/pexels-photo-3184406.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "date": "2024-10-01",
+    "carModel": "Tesla Model S",
+    "summary": "A deep dive into the latest Tesla Model S, exploring its features, performance, and why it's a game-changer for electric vehicles.",
+    "content": "The Tesla Model S continues to be one of the most innovative electric vehicles on the market. This year’s model boasts a new battery architecture, increased range, and improved software capabilities...",
+    "tags": ["Tesla", "Electric Vehicles", "Review", "2024 Models"],
+    "imageUrl": "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&w=600"
+  }
+]

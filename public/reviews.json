@@ -21,7 +21,7 @@
       "name": "Maria Gonzalez",
       "profession": "Marketing Specialist",
       "message": "Overall, I had a good experience. However, there is room for improvement in the response time.",
-      "rating": 3
+      "rating": 3.2
     },
     {
       "_id": "4",
@@ -29,7 +29,7 @@
       "name": "James Thompson",
       "profession": "Product Manager",
       "message": "Excellent service! The team went above and beyond to meet our needs.",
-      "rating": 5
+      "rating": 3.8
     },
     {
       "_id": "5",
@@ -37,7 +37,24 @@
       "name": "Emily Davis",
       "profession": "Business Analyst",
       "message": "Satisfied with the overall experience, but some parts of the process could be more streamlined.",
-      "rating": 4
+      "rating": 4.2
+    },
+    {
+      "_id": "6",
+      "image": "https://img.freepik.com/free-psd/3d-render-avatar-character_23-2150611765.jpg",
+      "name": "Alice Johnson",
+      "profession": "Software Engineer",
+      "message": "The service was exceptional! The team was professional, and I was very satisfied with the outcome.",
+      "rating": 5
+    }
+    ,
+    {
+      "_id": "7",
+      "image": "https://img.freepik.com/premium-vector/beauty-girl-avatar-character-simple-vector_855703-383.jpg",
+      "name": "David Lee",
+      "profession": "Graphic Designer",
+      "message": "Great experience! The support was prompt and helped me resolve my issue quickly.",
+      "rating": 4.6
     }
   ]
   

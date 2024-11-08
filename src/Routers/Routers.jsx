@@ -3,7 +3,6 @@ import { Root } from "../MainRoute/Root";
 import HomePage from "../Pages/HomePage/HomePage";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import About from "../Pages/About/About";
-import Services from "../Pages/Services/Services";
 import Blog from "../Pages/Blog/Blog";
 import Contact from "../Pages/Contact/Contact";
 import SignUp from "../Pages/SignUp/SignUp";
@@ -33,10 +32,7 @@ const router = createBrowserRouter([
         path: "/about",
         element: <About></About>,
       },
-      {
-        path: "/services",
-        element: <Services></Services>,
-      },
+     
       {
         path: "/blog",
         element: <Blog></Blog>,
@@ -55,15 +51,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-product",
-        element: <AddProduct></AddProduct>
+        element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
       },
       {
         path: "/my-orders",
-        element: <Orders></Orders>
+        element: <PrivateRoute><Orders></Orders></PrivateRoute>
       },
       {
         path: "/add-service",
-        element: <AddService></AddService>
+        element: <PrivateRoute><AddService></AddService></PrivateRoute>
       },
       {
         path: "/service/:id",

@@ -14,6 +14,7 @@ import { FaMapLocation } from "react-icons/fa6";
 import UseDataFetch from "../../Hooks/UseDataFetch";
 import CardSlider from "../../Components/SliderCard/CardSlider";
 import Reviews from "../../Components/Reviews/Reviews";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const services = UseDataFetch("http://localhost:5000/services");
@@ -48,7 +49,7 @@ const HomePage = () => {
               injected humour, or randomised words which don't look even
               slightly believable.
             </p>
-            <button className="btn btn-error text-white">Get More Info</button>
+            <Link to={'/about'}><button className="btn btn-error text-white">Get More Info</button></Link>
           </div>
         </div>
       </div>
