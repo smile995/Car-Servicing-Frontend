@@ -14,6 +14,8 @@ const UseDataFetch = (url) => {
         setData(res.data);
       })
       .catch((error) => {
+        console.log(error);
+        
         if (error.response.status) {
           userSignOut()
           .then(()=>{

@@ -10,9 +10,8 @@ const Orders = () => {
   const serviceUrl = `https://car-doctor-backend-delta.vercel.app/bookings/${user?.email}`;
   const productUrl = `https://car-doctor-backend-delta.vercel.app/order/${user?.email}`;
   let myServices = UseDataFetch(serviceUrl);
-const orders= UseDataFetch(productUrl)
+  const orders = UseDataFetch(productUrl);
 
- 
   const handleDeleteService = (id) => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -33,20 +32,25 @@ const orders= UseDataFetch(productUrl)
       })
       .then((result) => {
         if (result.isConfirmed) {
-          axios.delete(`https://car-doctor-backend-delta.vercel.app/service/${id}`).then((res) => {
-            if (res.data.deletedCount > 0) {
-              swalWithBootstrapButtons.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
-                icon: "success",
-              });
+          axios
+            .delete(
+              `https://car-doctor-backend-delta.vercel.app/service/${id}`,
+              { withCredentials: true }
+            )
+            .then((res) => {
+              if (res.data.deletedCount > 0) {
+                swalWithBootstrapButtons.fire({
+                  title: "Deleted!",
+                  text: "Your file has been deleted.",
+                  icon: "success",
+                });
 
-              const remaining = myServices.filter(
-                (service) => service._id !== id
-              );
-              setMyServices(remaining);
-            }
-          });
+                const remaining = myServices.filter(
+                  (service) => service._id !== id
+                );
+                setMyServices(remaining);
+              }
+            });
         } else if (
           /* Read more about handling dismissals below */
           result.dismiss === Swal.DismissReason.cancel
@@ -61,8 +65,12 @@ const orders= UseDataFetch(productUrl)
   };
 
   const handleUpdateStatus = (id) => {
-  
-    axios.patch(`https://car-doctor-backend-delta.vercel.app/service/${id}`, { status: "confirm" })
+    axios
+      .patch(
+        `https://car-doctor-backend-delta.vercel.app/service/${id}`,
+        { withCredentials: true },
+        { status: "confirm" }
+      )
       .then((res) => {
         console.log(res.data);
         if (res.data.modifiedCount > 0) {
@@ -75,7 +83,7 @@ const orders= UseDataFetch(productUrl)
           const update = myServices.find((service) => service._id === id);
           update.status = "confirm";
           const newBooking = [update, ...remaining];
-          myServices= newBooking
+          myServices = newBooking;
         }
       });
   };

@@ -10,7 +10,7 @@ import UseDataFetch from "../../Hooks/UseDataFetch";
 import Rating from "../Rating/Rating";
 const Reviews = () => {
   const reviews = UseDataFetch("/reviews.json");
-  console.log(reviews);
+
 
   return (
     <Swiper

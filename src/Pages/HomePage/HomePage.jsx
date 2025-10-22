@@ -27,7 +27,7 @@ const HomePage = () => {
   };
   return (
     <div className="lg:space-y-20 space-y-10">
-      <Banner></Banner>
+      <Banner/>
       <div>
         <div className="md:flex gap-5 items-center p-2 space-y-4 ">
           <div className="md:w-1/2 relative">
