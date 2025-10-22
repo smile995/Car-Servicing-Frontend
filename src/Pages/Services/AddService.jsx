@@ -18,14 +18,14 @@ const AddService = () => {
       serviceProvider,
       description,
     };
-    fetch('http://localhost:5000/add-service',{
+    fetch('https://car-doctor-backend-delta.vercel.app/add-service',{
       method:'POST',
       headers:{ "Content-Type": "application/json"},
       body:JSON.stringify(service)
     })
     .then(response=>response.json())
     .then(data=>{
-      if(data.acknowledged===true){
+      if(data?.acknowledged===true){
         Swal.fire({
           position: "top-end",
           icon: "success",

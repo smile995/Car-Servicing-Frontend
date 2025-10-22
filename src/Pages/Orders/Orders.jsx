@@ -7,10 +7,11 @@ import UseDataFetch from "../../Hooks/UseDataFetch";
 
 const Orders = () => {
   const { user } = useAuthContext();
-  const serviceUrl = `http://localhost:5000/bookings/${user?.email}`;
-  const productUrl = `http://localhost:5000/order/${user?.email}`;
+  const serviceUrl = `https://car-doctor-backend-delta.vercel.app/bookings/${user?.email}`;
+  const productUrl = `https://car-doctor-backend-delta.vercel.app/order/${user?.email}`;
   let myServices = UseDataFetch(serviceUrl);
 const orders= UseDataFetch(productUrl)
+
  
   const handleDeleteService = (id) => {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -32,7 +33,7 @@ const orders= UseDataFetch(productUrl)
       })
       .then((result) => {
         if (result.isConfirmed) {
-          axios.delete(`http://localhost:5000/service/${id}`).then((res) => {
+          axios.delete(`https://car-doctor-backend-delta.vercel.app/service/${id}`).then((res) => {
             if (res.data.deletedCount > 0) {
               swalWithBootstrapButtons.fire({
                 title: "Deleted!",
@@ -61,7 +62,7 @@ const orders= UseDataFetch(productUrl)
 
   const handleUpdateStatus = (id) => {
   
-    axios.patch(`http://localhost:5000/service/${id}`, { status: "confirm" })
+    axios.patch(`https://car-doctor-backend-delta.vercel.app/service/${id}`, { status: "confirm" })
       .then((res) => {
         console.log(res.data);
         if (res.data.modifiedCount > 0) {

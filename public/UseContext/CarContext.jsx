@@ -28,24 +28,17 @@ const CarContext = ({ children }) => {
   };
   useEffect(() => {
     const currentUser = onAuthStateChanged(auth, (currentUser) => {
-      const userEmail= currentUser?.email || user?.email
       setUser(currentUser);  
       setLoading(false)
-      if(currentUser){
-        axios.post('http://localhost:5000/jwt-token',{email:userEmail},{withCredentials:true})
-        .then(res=> console.log(res.data) )
-        .catch(error=>{
-          console.log(error);
-          
-        })
-      }
-      else{
-        axios.post("http://localhost:5000/remove-token",{email:userEmail},{withCredentials:true})
-        .then(res=>{
-          console.log(res.data);
-          
-        })
-      }
+      const email= currentUser?.email
+     if(currentUser){
+      axios.post("https://car-doctor-backend-delta.vercel.app/jwt",{email}, {withCredentials:true})
+      .then(res=>{
+        console.log(res.data);
+        
+      })
+
+     }
       
     });
     return () => {

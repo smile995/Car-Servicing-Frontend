@@ -22,7 +22,9 @@ const AddProduct = () => {
       stock,
       rating,
     };
-    fetch('http://localhost:5000/add-product',{
+  
+    
+    fetch('https://car-doctor-backend-delta.vercel.app/add-product',{
       method:'POST',
       headers:{ "Content-Type": "application/json"},
       body:JSON.stringify(product)

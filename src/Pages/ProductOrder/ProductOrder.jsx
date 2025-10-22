@@ -30,7 +30,7 @@ const ProductOrder = () => {
     };
 
 
-    axios.post('http://localhost:5000/purchase', orderedProduct)
+    axios.post('https://car-doctor-backend-delta.vercel.app/purchase', orderedProduct)
     .then(result=>{
        if(result.data.insertedId){
         Swal.fire({

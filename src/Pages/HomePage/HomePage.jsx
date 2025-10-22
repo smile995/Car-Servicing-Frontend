@@ -14,12 +14,11 @@ import { FaMapLocation } from "react-icons/fa6";
 import UseDataFetch from "../../Hooks/UseDataFetch";
 import CardSlider from "../../Components/SliderCard/CardSlider";
 import Reviews from "../../Components/Reviews/Reviews";
-import { Link } from "react-router-dom";
 import { useRef } from "react";
 
 const HomePage = () => {
-  const services = UseDataFetch("http://localhost:5000/services");
-  const products = UseDataFetch("http://localhost:5000/products");
+  const services = UseDataFetch("https://car-doctor-backend-delta.vercel.app/services");
+  const products = UseDataFetch("https://car-doctor-backend-delta.vercel.app/products");
   const targetSection = useRef(null);
 
   // Function to scroll to the target section
@@ -69,7 +68,7 @@ const HomePage = () => {
             }
           ></TitleSubTitle>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:px-5 px-2 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {services?.map((service) => (
             <ServicesCard service={service} key={service._id}></ServicesCard>
           ))}
@@ -119,7 +118,7 @@ const HomePage = () => {
             }
           ></TitleSubTitle>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:px-5 px-2 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {products?.map((product) => (
             <ProductCard product={product} key={product._id}></ProductCard>
           ))}

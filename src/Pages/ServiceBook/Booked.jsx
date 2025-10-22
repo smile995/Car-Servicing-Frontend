@@ -28,7 +28,7 @@ const Booked = () => {
       title,
       image,
     };
-   axios.post('http://localhost:5000/order',order)
+   axios.post('https://car-doctor-backend-delta.vercel.app/order',order)
    .then(res=>{
         if(res.data.insertedId){
             Swal.fire({

@@ -15,8 +15,6 @@ import ProductDetails from "../Pages/ProductDetails/ProductDetails";
 import ProductOrder from "../Pages/ProductOrder/ProductOrder";
 import PrivateRoute from "../../public/PrivateRoute/PrivateRoute";
 
-
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,8 +25,7 @@ const router = createBrowserRouter([
         path: "/",
         element: <HomePage></HomePage>,
       },
-      
-     
+
       {
         path: "/blog",
         element: <Blog></Blog>,
@@ -47,35 +44,71 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-product",
-        element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <AddProduct></AddProduct>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/my-orders",
-        element: <PrivateRoute><Orders></Orders></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <Orders></Orders>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/add-service",
-        element: <PrivateRoute><AddService></AddService></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <AddService></AddService>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/service/:id",
-        loader:({params})=>fetch(`http://localhost:5000/service/${params.id}`),
-        element: <PrivateRoute><Details></Details></PrivateRoute>
+        loader: ({ params }) =>
+          fetch(
+            `https://car-doctor-backend-delta.vercel.app/service/${params.id}`
+          ),
+        element: (
+          <PrivateRoute>
+            <Details></Details>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/product/:id",
-        loader:({params})=>fetch(`http://localhost:5000/product/${params.id}`),
-        element:<PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>
+        loader: ({ params }) =>
+          fetch(
+            `https://car-doctor-backend-delta.vercel.app/product/${params.id}`
+          ),
+        element: (
+          <PrivateRoute>
+            <ProductDetails></ProductDetails>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/book/:id",
-        loader:({params})=>fetch(`http://localhost:5000/service/${params.id}`),
-        element: <PrivateRoute><Booked></Booked></PrivateRoute>
+        loader: ({ params }) =>
+          fetch(
+            `https://car-doctor-backend-delta.vercel.app/service/${params.id}`
+          ),
+        element: (
+          <PrivateRoute>
+            <Booked></Booked>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/order/product/:id",
-        loader:({params})=>fetch(`http://localhost:5000/product/${params.id}`),
-        element: <ProductOrder></ProductOrder>
+        loader: ({ params }) =>
+          fetch(
+            `https://car-doctor-backend-delta.vercel.app/product/${params.id}`
+          ),
+        element: <ProductOrder></ProductOrder>,
       },
     ],
   },
