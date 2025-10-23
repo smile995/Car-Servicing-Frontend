@@ -140,7 +140,7 @@ const HomePage = () => {
           ></TitleSubTitle>
         </div>
 
-        <CardSlider></CardSlider>
+        <CardSlider/>
       </div>
       <div>
         <div className="space-y-2">

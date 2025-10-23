@@ -1,13 +1,13 @@
-import img1 from "../../assets/images/banner/1.jpg";
-import img2 from "../../assets/images/banner/2.jpg";
-import img3 from "../../assets/images/banner/3.jpg";
+import img1 from "../../assets/images/banner/banner1.jpg";
+import img2 from "../../assets/images/banner/banner2.jpg";
+import img3 from "../../assets/images/banner/banner3.jpg";
 import img4 from "../../assets/images/banner/4.jpg";
-import img5 from "../../assets/images/banner/5.jpg";
+import img5 from "../../assets/images/banner/4291.jpg";
 import img6 from "../../assets/images/banner/6.jpg";
 
 const Banner = () => {
   return (
-    <div className="carousel w-full h-fit">
+    <div className="carousel w-full h-96 h-md-screen md:h-screen rounded-xl">
       
       <div id="slide1" className="carousel-item relative w-full  ">
         <img src={img5} className="w-full rounded-xl" />

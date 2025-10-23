@@ -53,8 +53,8 @@ const CardSlider = () => {
               />
             </figure>
             <div className="card-body items-center text-center">
-              <h2 className="text-3xl font-bold">{expert?.name}</h2>
-              <p className="text-[#737373] font-semibold text-2xl">{expert?.expertIn}</p>
+              <h2 className="text-xl font-bold">{expert?.name}</h2>
+              <p className="text-[#737373] font-semibold text-md">{expert?.expertIn}</p>
               <div className="flex gap-5 items-center">
                 <a href={expert?.facebook} target="_blank" rel="noopener noreferrer">
                   <FaFacebook className="text-3xl font-bold text-blue-800" />
