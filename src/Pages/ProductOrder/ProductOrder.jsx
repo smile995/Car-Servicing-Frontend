@@ -9,7 +9,6 @@ const ProductOrder = () => {
   const productInfo = useLoaderData();
   const { productName, price, image } = productInfo;
 
-
   const handleProductOrder = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -29,20 +28,22 @@ const ProductOrder = () => {
       image,
     };
 
-
-    axios.post('https://car-doctor-backend-delta.vercel.app/purchase', orderedProduct)
-    .then(result=>{
-       if(result.data.insertedId){
-        Swal.fire({
+    axios
+      .post(
+        "https://car-doctor-backend-delta.vercel.app/purchase",
+        orderedProduct
+      )
+      .then((result) => {
+        if (result.data.insertedId) {
+          Swal.fire({
             position: "top-end",
             icon: "success",
             title: "Your order successfully placed",
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
           });
-       }
-        
-    })
+        }
+      });
   };
   return (
     <div className="card bg-base-100 h-full  max-w-sm lg:max-w-full border-2 md:max-w-screen-md shadow-2xl mx-auto">
@@ -73,6 +74,7 @@ const ProductOrder = () => {
             <input
               type="text"
               name="total"
+              readOnly
               defaultValue={price}
               placeholder="Total Price"
               className="input input-bordered w-full"
@@ -88,7 +90,7 @@ const ProductOrder = () => {
             <input
               type="email"
               name="email"
-              defaultValue={user.email}
+              defaultValue={user?.email}
               placeholder="Your email here"
               className="input input-bordered w-full"
               required
@@ -101,6 +103,8 @@ const ProductOrder = () => {
             <input
               type="text"
               name="due"
+              readOnly
+              defaultValue={price}
               placeholder="Due amount here"
               className="input input-bordered w-full"
               required
@@ -115,6 +119,7 @@ const ProductOrder = () => {
             <input
               type="text"
               name="product"
+              readOnly
               defaultValue={productName}
               placeholder="Service title here"
               className="input input-bordered w-full"
@@ -127,6 +132,7 @@ const ProductOrder = () => {
             </label>
             <input
               type="date"
+             
               name="date"
               className="input input-bordered w-full"
               required

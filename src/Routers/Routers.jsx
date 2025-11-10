@@ -18,35 +18,35 @@ import PrivateRoute from "../../public/PrivateRoute/PrivateRoute";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root></Root>,
-    errorElement: <ErrorPage></ErrorPage>,
+    element: <Root/>,
+    errorElement: <ErrorPage/>,
     children: [
       {
         path: "/",
-        element: <HomePage></HomePage>,
+        element: <HomePage/>
       },
 
       {
         path: "/blog",
-        element: <Blog></Blog>,
+        element: <Blog/>
       },
       {
         path: "/contact",
-        element: <Contact></Contact>,
+        element: <Contact/>
       },
       {
         path: "/signup",
-        element: <SignUp></SignUp>,
+        element: <SignUp/>
       },
       {
         path: "/login",
-        element: <Login></Login>,
+        element: <Login/>
       },
       {
         path: "/add-product",
         element: (
           <PrivateRoute>
-            <AddProduct></AddProduct>
+            <AddProduct/>
           </PrivateRoute>
         ),
       },
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
         path: "/my-orders",
         element: (
           <PrivateRoute>
-            <Orders></Orders>
+            <Orders/>
           </PrivateRoute>
         ),
       },

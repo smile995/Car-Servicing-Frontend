@@ -7,6 +7,8 @@ import UseDataFetch from "../../Hooks/UseDataFetch";
 
 const Orders = () => {
   const { user } = useAuthContext();
+  console.log(user);
+  
   const serviceUrl = `https://car-doctor-backend-delta.vercel.app/bookings/${user?.email}`;
   const productUrl = `https://car-doctor-backend-delta.vercel.app/order/${user?.email}`;
   let myServices = UseDataFetch(serviceUrl);

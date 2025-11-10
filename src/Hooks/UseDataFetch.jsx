@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const UseDataFetch = (url) => {
   const { userSignOut } = useAuthContext();
-  const navigate= useNavigate()
+  const navigate = useNavigate();
   const [data, setData] = useState(null);
   useEffect(() => {
     axios
@@ -15,14 +15,14 @@ const UseDataFetch = (url) => {
       })
       .catch((error) => {
         console.log(error);
-        
-        if (error.response.status) {
-          userSignOut()
-          .then(()=>{
-            navigate('/login')
-          }
-          );
-        }
+
+        // if (error.response.status) {
+        //   userSignOut()
+        //   .then(()=>{
+        //     navigate('/login')
+        //   }
+        //   );
+        // }
       });
   }, [url]);
   return data;

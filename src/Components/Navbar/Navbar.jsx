@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import useAuthContext from "../../Hooks/useAuthContext";
 
 const Navbar = () => {
-  const {user, userSignOut}= useAuthContext()
+  const { user, userSignOut } = useAuthContext();
 
   const nabManu = (
     <>
@@ -18,19 +18,19 @@ const Navbar = () => {
       <li>
         <NavLink to={"/contact"}>Contact</NavLink>
       </li>
-      {
-        user && (
-          <><li>
+      {user && (
+        <>
+          {/* <li>
             <NavLink to={"/add-product"}>Add Product</NavLink>
-          </li><li>
-              <NavLink to={"/add-service"}>Add Service</NavLink>
-            </li><li>
-              <NavLink to={"/my-orders"}>My Orders</NavLink>
-            </li></>
-        )
-        
-      }
-      
+          </li>
+          <li>
+            <NavLink to={"/add-service"}>Add Service</NavLink>
+          </li> */}
+          <li>
+            <NavLink to={"/my-orders"}>My Orders</NavLink>
+          </li>
+        </>
+      )}
     </>
   );
   const handleSignOut = () => {

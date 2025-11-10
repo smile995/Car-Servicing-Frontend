@@ -7,12 +7,11 @@ import { CarContextAuth } from "../../../public/UseContext/CarContext";
 import Swal from "sweetalert2";
 import useAuthContext from "../../Hooks/useAuthContext";
 
-
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
-const {userLogIn, setUser}=useAuthContext()
+
+  const { userLogIn, setUser } = useAuthContext();
   // const { userLogIn, setUser } = useContext(CarContextAuth);
 
   const handleLogin = (e) => {
@@ -28,13 +27,14 @@ const {userLogIn, setUser}=useAuthContext()
           icon: "success",
           title: "Successfull",
           text: "You are successfully logged in",
-         
         });
         setUser(user);
         navigate(location?.state ? location?.state : "/");
         form.reset();
       })
-      .then((error) => console.log(error));
+      .then((error) => {
+        console.log(error);
+      });
   };
   return (
     <div className="md:flex justify-around items-center">

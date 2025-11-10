@@ -31,14 +31,14 @@ const CarContext = ({ children }) => {
       setUser(currentUser);  
       setLoading(false)
       const email= currentUser?.email
-     if(currentUser){
-      axios.post("https://car-doctor-backend-delta.vercel.app/jwt",{email}, {withCredentials:true})
-      .then(res=>{
-        console.log(res.data);
+    //  if(currentUser){
+    //   axios.post("https://car-doctor-backend-delta.vercel.app/jwt",{email}, {withCredentials:true})
+    //   .then(res=>{
+    //     console.log(res.data);
         
-      })
+    //   })
 
-     }
+    //  }
       
     });
     return () => {

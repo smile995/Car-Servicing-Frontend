@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 const Booked = () => {
   const orderData = useLoaderData();
   const { user, } = useContext(CarContextAuth);
-  console.log(user);
+  
   
   const { image,price,serviceName } = orderData;
   const handleOrderIntoDB = (event) => {
@@ -48,7 +48,7 @@ const Booked = () => {
   };
 
   return (
-    <div className="card bg-base-100 h-full  max-w-sm lg:max-w-full border-2 md:max-w-screen-md shadow-2xl mx-auto">
+    <div className="card bg-base-100 mt-20 h-full  max-w-sm lg:max-w-full border-2 md:max-w-screen-md shadow-2xl mx-auto">
       <form onSubmit={handleOrderIntoDB} className="card-body">
         <div className="form-control">
           <h1 className="text-5xl font-bold text-center">
@@ -76,6 +76,7 @@ const Booked = () => {
             <input
               type="text"
               name="total"
+              readOnly
               defaultValue={price}
               placeholder="Total Price"
               className="input input-bordered w-full"
@@ -104,6 +105,8 @@ const Booked = () => {
             <input
               type="text"
               name="due"
+               defaultValue={price}
+               readOnly
               placeholder="Due amount here"
               className="input input-bordered w-full"
               required
@@ -118,6 +121,7 @@ const Booked = () => {
             <input
               type="text"
               name="title"
+              readOnly
               defaultValue={serviceName}
               placeholder="Service title here"
               className="input input-bordered w-full"
